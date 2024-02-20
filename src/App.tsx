@@ -1,22 +1,19 @@
-import StarIcon from './assets/star.svg?react'
-import LogoIcon from './assets/stair.svg?react'
-import './styles.css'
+import './styles.css';
+import {Logo} from "./ui/Logo";
+import {UserAvatar} from "./ui/UserAvatar";
+import {Restaurants} from "./pages/Restaurants";
 
 function App() {
   return (
     <>
       <header>
-        <div className="logo">
-          <LogoIcon width={16} height={16} className="logo__icon" />
-          <span>Eats</span>
-        </div>
-        <div className="profile">
-          <img alt="profile" src="/avatar.png" />
+        <div className="header__container">
+            <Logo width={16} height={16} fill={'#000000'} />
+            <UserAvatar src={'./avatar.png'} />
         </div>
       </header>
-      <main>
-        <input placeholder="Search for restaurants" />
-        <section></section>
+      <main className="container">
+        <Restaurants />
       </main>
       <footer>
         <p>Privacy Policy</p>
