@@ -12,7 +12,7 @@ export const Card: FC<TProps> = ({ restaurant, onRaitingRestaurant}) => {
     return (
         <li className="restaurants-list__item">
             <div className="restaurants-list__wrap">
-                <img className="restaurants-list__img" src={restaurant.url}/>
+                <img className="restaurants-list__img" src={restaurant.url} alt={restaurant.name}/>
                 <h3 className="restaurants-list__title">{restaurant.name}</h3>
                 <div className="restaurants-list__subtitle">{restaurant.description}</div>
             </div>
