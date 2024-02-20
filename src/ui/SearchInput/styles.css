@@ -1,0 +1,10 @@
+.search-input {
+    width: 100%;
+    padding: 15px 30px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: lightpink;
+}
+.search-input::placeholder {
+    color: lightcoral;
+}
