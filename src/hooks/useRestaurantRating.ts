@@ -1,21 +1,25 @@
-import {useMutation} from "@tanstack/react-query";
-import {UpdateRestaurantRaitingArgs, updateRestaurantRating} from "../api/api";
-import {queryClient} from "../api/queryClient";
+import {Restaurant, UpdateRestaurantRaitingArgs, updateRestaurantRating} from "../api/api";
+import {useEffect, useState} from "react";
 
-type Response = {
-    isError: boolean,
-    isLoading: boolean,
+type TArgs = {
+    data: Restaurant[],
+    refetch: () => void,
 }
 
-export const useRestaurantRating = ({ id, raiting }: UpdateRestaurantRaitingArgs): Response => {
-    const { isError, isLoading } = useMutation({
-        mutationFn: () => updateRestaurantRating({ id, raiting}),
-        onSuccess: () => {
-           queryClient.invalidateQueries({ queryKey: ['restaurants'] })
+type Response = {
+    setChangeRating: (restaurantRaitingArgs: UpdateRestaurantRaitingArgs) => void;
+}
+
+export const useRestaurantRating = ({ data, refetch }: TArgs): Response => {
+    const [changeRating, setChangeRating] = useState({ id: '', raiting: 0 });
+    useEffect(() => {
+        const restaurant = data?.find((restaurant) => restaurant.id === changeRating.id);
+
+        if (restaurant) {
+            updateRestaurantRating(changeRating).then(() => refetch());
         }
-    }, queryClient);
+    }, [changeRating]);
     return {
-        isError,
-        isLoading,
+        setChangeRating,
     }
 }
