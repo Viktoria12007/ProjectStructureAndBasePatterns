@@ -9,7 +9,7 @@ function App() {
       <header>
         <div className="header__container">
             <Logo width={16} height={16} fill={'#000000'} />
-            <UserAvatar src={'./avatar.png'} />
+            <UserAvatar url={'./avatar.png'} />
         </div>
       </header>
       <main className="container">
