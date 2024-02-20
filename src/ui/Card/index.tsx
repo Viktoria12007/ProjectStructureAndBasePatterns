@@ -1,14 +1,14 @@
 import StarIcon from '../../assets/star.svg?react';
 import {FC} from "react";
 import './styles.css';
-import {Restaurant} from "../../api/api";
+import {Restaurant, UpdateRestaurantRaitingArgs} from "../../api/api";
 
 type TProps = {
     restaurant: Restaurant,
-    // onRaitingRestaurant: ({ id: string, raiting: number }) => void,
+    onRaitingRestaurant: (restaurantRaitingArgs: UpdateRestaurantRaitingArgs) => void,
 }
 
-export const Card: FC<TProps> = ({ restaurant}) => {
+export const Card: FC<TProps> = ({ restaurant, onRaitingRestaurant}) => {
     return (
         <li className="restaurants-list__item">
             <div className="restaurants-list__wrap">
@@ -21,7 +21,7 @@ export const Card: FC<TProps> = ({ restaurant}) => {
                     return <button
                                 key={index}
                                 className="restaurants-list__button"
-                                // onClick={() => onRaitingRestaurant({ id: restaurant.id, raiting: index + 1 })}
+                                onClick={() => onRaitingRestaurant({ id: restaurant.id, raiting: index + 1 <= restaurant.raiting ? index : index + 1})}
                             >
                                 <StarIcon
                                     className="restaurants-list__icon"

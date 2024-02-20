@@ -4,10 +4,12 @@ import {useRestaurantsList} from "../../hooks/useRestaurantsList";
 import {Card} from "../../ui/Card";
 import './styles.css';
 import {Loader} from "../../ui/Loader";
+import {useRestaurantRating} from "../../hooks/useRestaurantRating";
 
 export const Restaurants: FC = () => {
-    const { data, isError, isLoading, refetch } = useRestaurantsList();
     const [searchRestaurant, setSearchRestaurant] = useState('');
+    const { data, isError, isLoading, refetch } = useRestaurantsList();
+    const { setChangeRating } = useRestaurantRating({ data, refetch });
 
     const filteredRestaurants = data?.filter((restaurant) => restaurant.name.toLowerCase().includes(searchRestaurant.toLowerCase().trim()));
 
@@ -29,6 +31,7 @@ export const Restaurants: FC = () => {
                                     <Card
                                         key={restaurant.id}
                                         restaurant={restaurant}
+                                        onRaitingRestaurant={setChangeRating}
                                     />
                                 ))
                 }
