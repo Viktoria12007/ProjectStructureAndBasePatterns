@@ -1,0 +1,28 @@
+.restaurants-list__item {
+    flex: 1 0 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.restaurants-list__img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.restaurants-list__title {
+    margin-bottom: 0;
+}
+.restaurants-list__subtitle {
+    color: lightcoral;
+    margin-bottom: 20px;
+}
+.restaurants-list__button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.restaurants-list__icon > path {
+    stroke: red;
+}
